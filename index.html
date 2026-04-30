@@ -500,10 +500,12 @@
           <h3>Request a Free Estimate</h3>
           <p>Tell us what your property needs. We’ll review your request and follow up with a phone call.</p>
           <form action="https://formspree.io/f/xpwllvbq" method="POST" enctype="multipart/form-data">
-            <input type="text" name="name" placeholder="Your name" required />
-            <input type="tel" name="phone" placeholder="Phone number" required />
-            <input type="email" name="email" placeholder="Email address" />
-            <input type="text" id="property-address" name="address" placeholder="Property address" autocomplete="street-address" required />
+            <input type="text" name="first_name" placeholder="First name" autocomplete="given-name" required />
+            <input type="text" name="last_name" placeholder="Last name" autocomplete="family-name" required />
+            <input type="tel" id="phone" name="phone" placeholder="Phone number" autocomplete="tel" inputmode="tel" maxlength="14" required />
+            <input type="email" id="email" name="email" placeholder="Email address" autocomplete="email" required />
+            <input type="text" id="property-address" name="address" placeholder="Start typing property address, then select Google suggestion" autocomplete="off" required />
+            <small id="address-help" style="color:#64748b;margin-top:-8px;display:block;">Please select the full address from the Google suggestions to verify it.</small>
             <select name="service" required>
               <option value="">What do you need help with?</option>
               <option>Home seller prep</option>
@@ -530,6 +532,12 @@
             <input type="hidden" name="formatted_address" id="formatted_address" />
             <input type="hidden" name="address_latitude" id="address_latitude" />
             <input type="hidden" name="address_longitude" id="address_longitude" />
+            <input type="hidden" name="address_verified" id="address_verified" value="No" />
+            <input type="hidden" name="street_number" id="street_number" />
+            <input type="hidden" name="street_name" id="street_name" />
+            <input type="hidden" name="city" id="city" />
+            <input type="hidden" name="state" id="state" />
+            <input type="hidden" name="zip_code" id="zip_code" />
             <p class="form-note">Due to high volume of spam calls, we will review your request and return your inquiry with a phone call.</p>
             <button class="btn btn-primary" type="submit">Send Request</button>
           </form>
@@ -681,33 +689,106 @@
   <script>
     function initAutocomplete() {
       const addressInput = document.getElementById('property-address');
+      const addressHelp = document.getElementById('address-help');
+      const verifiedInput = document.getElementById('address_verified');
       if (!addressInput || !window.google) return;
+
+      let selectedVerifiedAddress = '';
+
+      const setAddressVerified = function(isVerified) {
+        if (verifiedInput) verifiedInput.value = isVerified ? 'Yes' : 'No';
+        if (addressHelp) {
+          addressHelp.textContent = isVerified
+            ? 'Address verified through Google.'
+            : 'Please select the full address from the Google suggestions to verify it.';
+          addressHelp.style.color = isVerified ? '#16a34a' : '#64748b';
+        }
+      };
+
+      addressInput.addEventListener('input', function () {
+        if (addressInput.value !== selectedVerifiedAddress) {
+          setAddressVerified(false);
+        }
+      });
 
       const autocomplete = new google.maps.places.Autocomplete(addressInput, {
         types: ['address'],
         componentRestrictions: { country: 'us' },
-        fields: ['formatted_address', 'geometry']
+        fields: ['formatted_address', 'geometry', 'address_components']
       });
 
       autocomplete.addListener('place_changed', function () {
         const place = autocomplete.getPlace();
-        if (place.formatted_address) {
-          addressInput.value = place.formatted_address;
-          const formatted = document.getElementById('formatted_address');
-          if (formatted) formatted.value = place.formatted_address;
+        if (!place || !place.formatted_address || !place.geometry) {
+          setAddressVerified(false);
+          return;
         }
-        if (place.geometry && place.geometry.location) {
-          const lat = document.getElementById('address_latitude');
-          const lng = document.getElementById('address_longitude');
-          if (lat) lat.value = place.geometry.location.lat();
-          if (lng) lng.value = place.geometry.location.lng();
+
+        addressInput.value = place.formatted_address;
+        selectedVerifiedAddress = place.formatted_address;
+
+        const formatted = document.getElementById('formatted_address');
+        if (formatted) formatted.value = place.formatted_address;
+
+        const lat = document.getElementById('address_latitude');
+        const lng = document.getElementById('address_longitude');
+        if (lat) lat.value = place.geometry.location.lat();
+        if (lng) lng.value = place.geometry.location.lng();
+
+        const componentMap = {
+          street_number: '',
+          route: '',
+          locality: '',
+          administrative_area_level_1: '',
+          postal_code: ''
+        };
+
+        if (place.address_components) {
+          place.address_components.forEach(function(component) {
+            const type = component.types[0];
+            if (Object.prototype.hasOwnProperty.call(componentMap, type)) {
+              componentMap[type] = type === 'administrative_area_level_1' ? component.short_name : component.long_name;
+            }
+          });
         }
+
+        const streetNumber = document.getElementById('street_number');
+        const streetName = document.getElementById('street_name');
+        const city = document.getElementById('city');
+        const state = document.getElementById('state');
+        const zip = document.getElementById('zip_code');
+
+        if (streetNumber) streetNumber.value = componentMap.street_number;
+        if (streetName) streetName.value = componentMap.route;
+        if (city) city.value = componentMap.locality;
+        if (state) state.value = componentMap.administrative_area_level_1;
+        if (zip) zip.value = componentMap.postal_code;
+
+        setAddressVerified(true);
       });
     }
   </script>
 
   <script>
     (function () {
+      const phoneInput = document.getElementById('phone');
+      if (phoneInput) {
+        phoneInput.addEventListener('input', function () {
+          const digits = phoneInput.value.replace(/[^0-9]/g, '').substring(0, 10);
+          const area = digits.substring(0, 3);
+          const middle = digits.substring(3, 6);
+          const last = digits.substring(6, 10);
+
+          if (digits.length > 6) {
+            phoneInput.value = '(' + area + ') ' + middle + '-' + last;
+          } else if (digits.length > 3) {
+            phoneInput.value = '(' + area + ') ' + middle;
+          } else if (digits.length > 0) {
+            phoneInput.value = '(' + area;
+          }
+        });
+      }
+
       const params = new URLSearchParams(window.location.search);
       const fields = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
 
@@ -725,7 +806,21 @@
 
       const form = document.querySelector('form[action="https://formspree.io/f/xpwllvbq"]');
       if (form) {
-        form.addEventListener('submit', function () {
+        form.addEventListener('submit', function (event) {
+          const addressVerified = document.getElementById('address_verified');
+          const addressInput = document.getElementById('property-address');
+          const addressHelp = document.getElementById('address-help');
+
+          if (addressVerified && addressVerified.value !== 'Yes') {
+            event.preventDefault();
+            if (addressHelp) {
+              addressHelp.textContent = 'Please choose a verified full address from the Google suggestions before submitting.';
+              addressHelp.style.color = '#dc2626';
+            }
+            if (addressInput) addressInput.focus();
+            return;
+          }
+
           if (typeof gtag === 'function') {
             gtag('event', 'generate_lead', {
               event_category: 'Lead',
