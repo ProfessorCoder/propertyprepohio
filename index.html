@@ -429,7 +429,7 @@
         <div class="quote-card" id="contact">
           <h3>Request a Free Estimate</h3>
           <p>Tell us what your property needs. We’ll follow up quickly to schedule a walkthrough or quote.</p>
-          <form action="mailto:your-email@example.com" method="post" enctype="text/plain">
+          <form action="https://formspree.io/f/xpwllvbq" method="POST" enctype="multipart/form-data">
             <input type="text" name="name" placeholder="Your name" required />
             <input type="tel" name="phone" placeholder="Phone number" required />
             <input type="email" name="email" placeholder="Email address" />
@@ -444,8 +444,14 @@
               <option>General handyman work</option>
             </select>
             <textarea name="message" placeholder="Briefly describe the property and work needed"></textarea>
+            <label style="font-size:14px;font-weight:700;color:#334155;">Upload property photos, if available</label>
+            <input type="file" name="photos" accept="image/*,.pdf" multiple />
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
             <p style="font-size:13px;color:#64748b;margin:4px 0 10px;">Due to high volume of spam calls, we will review your request and return your inquiry with a phone call.</p>
             <button class="btn btn-primary" type="submit">Send Request</button>
+                      <input type="hidden" name="_subject" value="New Property Prep Ohio Lead" />
+            <input type="hidden" name="_captcha" value="true" />
+            <input type="hidden" name="_next" value="https://propertyprepohio.com/thank-you.html" />
           </form>
         </div>
       </div>
