@@ -1,601 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Property Prep Ohio | Property Repairs, Cleanouts & Turnover Services</title>
-  <meta name="description" content="Property Prep Ohio helps home sellers, buyers, real estate agents, and landlords get properties ready with repairs, cleanouts, rental turnovers, and curb appeal services." />
-  <style>
-    :root {
-      --navy: #0f172a;
-      --blue: #1d4ed8;
-      --blue-dark: #1e40af;
-      --green: #16a34a;
-      --gray: #64748b;
-      --light: #f8fafc;
-      --border: #e2e8f0;
-      --white: #ffffff;
-      --shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    * { box-sizing: border-box; }
+<title>Property Prep Ohio | Property Repairs, Cleanouts & Turnovers</title>
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--navy);
-      background: var(--white);
-      line-height: 1.6;
-    }
+<meta name="description" content="Property Prep Ohio helps home sellers, buyers, agents, and landlords get properties ready with repairs, cleanouts, and rental turnovers across Ohio.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://propertyprepohio.com/">
 
-    a { color: inherit; text-decoration: none; }
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3YREESE77M"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-3YREESE77M');
+</script>
 
-    .container {
-      width: min(1120px, 92%);
-      margin: 0 auto;
-    }
+<!-- Local Business SEO -->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "HomeAndConstructionBusiness",
+ "name": "Property Prep Ohio",
+ "areaServed": "Ohio",
+ "url": "https://propertyprepohio.com/"
+}
+</script>
 
-    .topbar {
-      background: var(--navy);
-      color: white;
-      font-size: 14px;
-      padding: 10px 0;
-    }
-
-    .topbar .container {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(255,255,255,0.96);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(10px);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 0;
-      gap: 24px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 800;
-      font-size: 21px;
-      letter-spacing: -0.02em;
-    }
-
-    .logo-mark {
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--blue), var(--green));
-      color: white;
-      font-weight: 900;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 22px;
-      margin: 0;
-      padding: 0;
-      color: #334155;
-      font-size: 15px;
-      font-weight: 600;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 13px 20px;
-      border-radius: 999px;
-      font-weight: 800;
-      transition: 0.2s ease;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: var(--green);
-      color: white;
-      box-shadow: 0 12px 25px rgba(22, 163, 74, 0.25);
-    }
-
-    .btn-primary:hover { transform: translateY(-2px); background: #15803d; }
-
-    .btn-secondary {
-      background: white;
-      color: var(--navy);
-      border: 1px solid var(--border);
-    }
-
-    .hero {
-      background:
-        linear-gradient(rgba(15,23,42,0.82), rgba(15,23,42,0.72)),
-        url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1800&q=80') center/cover;
-      color: white;
-      padding: 96px 0 72px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 48px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.14);
-      border: 1px solid rgba(255,255,255,0.22);
-      color: #dcfce7;
-      font-weight: 800;
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 {
-      margin: 0 0 18px;
-      font-size: clamp(38px, 6vw, 66px);
-      line-height: 1.02;
-      letter-spacing: -0.05em;
-    }
-
-    .hero p {
-      margin: 0 0 28px;
-      color: #e2e8f0;
-      font-size: 20px;
-      max-width: 680px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 28px;
-    }
-
-    .trust-row {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      color: #e2e8f0;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .quote-card {
-      background: white;
-      color: var(--navy);
-      border-radius: 24px;
-      padding: 30px;
-      box-shadow: var(--shadow);
-    }
-
-    .quote-card h3 {
-      margin: 0 0 10px;
-      font-size: 25px;
-      letter-spacing: -0.03em;
-    }
-
-    .quote-card p { color: var(--gray); font-size: 15px; margin-bottom: 22px; }
-
-    form { display: grid; gap: 13px; }
-
-    input, select, textarea {
-      width: 100%;
-      padding: 14px 15px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      font: inherit;
-      color: var(--navy);
-      background: white;
-    }
-
-    textarea { min-height: 105px; resize: vertical; }
-
-    section { padding: 78px 0; }
-
-    .section-heading {
-      text-align: center;
-      max-width: 760px;
-      margin: 0 auto 44px;
-    }
-
-    .section-heading h2 {
-      margin: 0 0 12px;
-      font-size: clamp(30px, 4vw, 44px);
-      line-height: 1.1;
-      letter-spacing: -0.04em;
-    }
-
-    .section-heading p { color: var(--gray); font-size: 18px; margin: 0; }
-
-    .audience-grid,
-    .services-grid,
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 28px;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
-    }
-
-    .card h3 { margin: 0 0 10px; font-size: 22px; letter-spacing: -0.02em; }
-    .card p { color: var(--gray); margin: 0 0 16px; }
-    .card ul { margin: 0; padding-left: 19px; color: #334155; }
-    .card li { margin: 8px 0; }
-
-    .icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: #eff6ff;
-      color: var(--blue);
-      font-size: 25px;
-      margin-bottom: 16px;
-    }
-
-    .light-section { background: var(--light); }
-
-    .services-grid { grid-template-columns: repeat(4, 1fr); }
-
-    .service-card {
-      background: white;
-      padding: 24px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-    }
-
-    .service-card h3 { margin: 0 0 8px; font-size: 19px; }
-    .service-card p { margin: 0; color: var(--gray); font-size: 15px; }
-
-    .split {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 44px;
-      align-items: center;
-    }
-
-    .image-box {
-      min-height: 420px;
-      border-radius: 28px;
-      background: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=80') center/cover;
-      box-shadow: var(--shadow);
-    }
-
-    .check-list {
-      display: grid;
-      gap: 14px;
-      margin-top: 22px;
-    }
-
-    .check {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      color: #334155;
-      font-weight: 600;
-    }
-
-    .check span {
-      color: var(--green);
-      font-weight: 900;
-    }
-
-    .process-grid { counter-reset: step; }
-
-    .process-card { position: relative; }
-    .process-card::before {
-      counter-increment: step;
-      content: counter(step);
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--blue);
-      color: white;
-      font-weight: 900;
-      margin-bottom: 16px;
-    }
-
-    .cta {
-      background: var(--navy);
-      color: white;
-      border-radius: 32px;
-      padding: 52px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 26px;
-    }
-
-    .cta h2 { margin: 0 0 8px; font-size: 36px; letter-spacing: -0.04em; }
-    .cta p { margin: 0; color: #cbd5e1; font-size: 18px; }
-
-    footer {
-      background: #020617;
-      color: #cbd5e1;
-      padding: 44px 0;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr 1fr;
-      gap: 28px;
-    }
-
-    footer h3, footer h4 { color: white; margin-top: 0; }
-    footer ul { list-style: none; padding: 0; margin: 0; }
-    footer li { margin: 9px 0; }
-
-    .copyright {
-      border-top: 1px solid rgba(255,255,255,0.12);
-      margin-top: 32px;
-      padding-top: 22px;
-      font-size: 14px;
-      color: #94a3b8;
-    }
-
-    @media (max-width: 920px) {
-      nav ul { display: none; }
-      .hero-grid, .split, .cta, .footer-grid { grid-template-columns: 1fr; }
-      .audience-grid, .process-grid { grid-template-columns: 1fr; }
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .quote-card { margin-top: 10px; }
-    }
-
-    @media (max-width: 560px) {
-      .topbar .container { display: block; }
-      .hero { padding: 70px 0 52px; }
-      .hero-actions .btn { width: 100%; }
-      .services-grid { grid-template-columns: 1fr; }
-      .cta { padding: 34px 24px; }
-    }
-  </style>
+<style>
+body {font-family: Arial; margin:0;}
+.hero {background:#111; color:white; padding:60px; text-align:center;}
+.section {padding:40px;}
+.btn {background:#22c55e; color:white; padding:12px 20px; text-decoration:none; display:inline-block;}
+input, textarea, select {width:100%; padding:12px; margin:8px 0;}
+</style>
 </head>
+
 <body>
-  <div class="topbar">
-    <div class="container">
-      <div>Serving home sellers, buyers, real estate agents & landlords across Ohio</div>
-      <div><strong>Request a Quote Online — We’ll Call You Back</strong></div>
-    </div>
-  </div>
 
-  <header>
-    <div class="container nav">
-      <a class="logo" href="#top" aria-label="Property Prep Ohio home">
-        <span class="logo-mark">PP</span>
-        <span>Property Prep Ohio</span>
-      </a>
-      <nav aria-label="Main navigation">
-        <ul>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#clients">Who We Help</a></li>
-          <li><a href="#process">How It Works</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <a class="btn btn-primary" href="#contact">Request Quote</a>
-    </div>
-  </header>
+<div class="hero">
+<h1>Property Prep Ohio</h1>
+<p>Repairs, Cleanouts & Turnover Services</p>
+<a href="#form" class="btn">Request Quote</a>
+</div>
 
-  <main id="top">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">Ohio Property Prep & Repair Services</div>
-          <h1>Get Your Property Ready to Sell, Rent, or Move Into.</h1>
-          <p>Reliable cleanouts, repairs, rental turnovers, curb appeal work, and handyman services for homeowners, agents, investors, and landlords.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#contact">Request a Free Quote</a>
-            <a class="btn btn-secondary" href="#services">View Services</a>
-          </div>
-          <div class="trust-row">
-            <span>✓ Fast turnaround</span>
-            <span>✓ Local Ohio service</span>
-            <span>✓ One call handles it all</span>
-          </div>
-        </div>
+<div class="section">
+<h2>Services</h2>
+<ul>
+<li>Cleanouts</li>
+<li>Repairs</li>
+<li>Rental Turnovers</li>
+<li>Move-in Prep</li>
+</ul>
+</div>
 
-        <div class="quote-card" id="contact">
-          <h3>Request a Free Estimate</h3>
-          <p>Tell us what your property needs. We’ll follow up quickly to schedule a walkthrough or quote.</p>
-          <form action="https://formspree.io/f/xpwllvbq" method="POST" enctype="multipart/form-data">
-            <input type="text" name="name" placeholder="Your name" required />
-            <input type="tel" name="phone" placeholder="Phone number" required />
-            <input type="email" name="email" placeholder="Email address" />
-            <input type="text" name="address" placeholder="Property address" required />
-            <select name="service" required>
-              <option value="">What do you need help with?</option>
-              <option>Home seller prep</option>
-              <option>Buyer move-in repairs</option>
-              <option>Real estate agent punch list</option>
-              <option>Landlord rental turnover</option>
-              <option>Cleanout / junk removal</option>
-              <option>General handyman work</option>
-            </select>
-            <textarea name="message" placeholder="Briefly describe the property and work needed"></textarea>
-            <label style="font-size:14px;font-weight:700;color:#334155;">Upload property photos, if available</label>
-            <input type="file" name="photos" accept="image/*,.pdf" multiple />
-            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-            <p style="font-size:13px;color:#64748b;margin:4px 0 10px;">Due to high volume of spam calls, we will review your request and return your inquiry with a phone call.</p>
-            <button class="btn btn-primary" type="submit">Send Request</button>
-                      <input type="hidden" name="_subject" value="New Property Prep Ohio Lead" />
-            <input type="hidden" name="_captcha" value="true" />
-            <input type="hidden" name="_next" value="https://propertyprepohio.com/thank-you.html" />
-          </form>
-        </div>
-      </div>
-    </section>
+<div class="section" id="form">
+<h2>Request a Free Estimate</h2>
 
-    <section id="clients">
-      <div class="container">
-        <div class="section-heading">
-          <h2>Property Services for Every Stage</h2>
-          <p>Whether you’re preparing to list, moving into a new home, managing rentals, or supporting clients, we help get the work done quickly and professionally.</p>
-        </div>
-        <div class="audience-grid">
-          <div class="card">
-            <div class="icon">🏡</div>
-            <h3>Home Sellers & Buyers</h3>
-            <p>Get your home ready for showings, inspections, closing, or move-in day.</p>
-            <ul>
-              <li>Pre-listing repairs</li>
-              <li>Inspection punch lists</li>
-              <li>Move-in improvements</li>
-            </ul>
-          </div>
-          <div class="card">
-            <div class="icon">🔑</div>
-            <h3>Real Estate Agents</h3>
-            <p>A reliable partner for quick fixes, cleanouts, and listing preparation.</p>
-            <ul>
-              <li>Listing prep</li>
-              <li>Client-ready updates</li>
-              <li>Last-minute repairs</li>
-            </ul>
-          </div>
-          <div class="card">
-            <div class="icon">🏘️</div>
-            <h3>Landlords & Investors</h3>
-            <p>Turn units faster and keep properties rent-ready with dependable support.</p>
-            <ul>
-              <li>Rental turnovers</li>
-              <li>Tenant move-out cleanup</li>
-              <li>Maintenance punch lists</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+<form action="https://formspree.io/f/xpwllvbq" method="POST" enctype="multipart/form-data">
 
-    <section class="light-section" id="services">
-      <div class="container">
-        <div class="section-heading">
-          <h2>General Property Prep Services</h2>
-          <p>Simple, practical solutions that make properties cleaner, safer, more presentable, and ready for the next step.</p>
-        </div>
-        <div class="services-grid">
-          <div class="service-card"><h3>Cleanouts</h3><p>Garage, basement, rental, foreclosure, and move-out cleanouts.</p></div>
-          <div class="service-card"><h3>Minor Repairs</h3><p>Drywall patching, doors, trim, fixtures, hardware, and general fixes.</p></div>
-          <div class="service-card"><h3>Rental Turnovers</h3><p>Get units ready between tenants with cleaning, repairs, and touch-ups.</p></div>
-          <div class="service-card"><h3>Painting Touch-Ups</h3><p>Interior touch-ups, wall repairs, trim refreshes, and prep work.</p></div>
-          <div class="service-card"><h3>Curb Appeal</h3><p>Yard cleanup, debris removal, exterior touch-ups, and first-impression work.</p></div>
-          <div class="service-card"><h3>Inspection Punch Lists</h3><p>Handle small repairs requested before closing or after inspection.</p></div>
-          <div class="service-card"><h3>Move-In Prep</h3><p>Fix, clean, and prepare a property before new owners or tenants arrive.</p></div>
-          <div class="service-card"><h3>Hauling & Removal</h3><p>Remove unwanted items, trash, and debris from inside or outside.</p></div>
-        </div>
-      </div>
-    </section>
+<input type="text" name="name" placeholder="Name" required>
+<input type="tel" name="phone" placeholder="Phone" required>
+<input type="email" name="email" placeholder="Email">
 
-    <section>
-      <div class="container split">
-        <div class="image-box" aria-label="Home repair tools and property service work"></div>
-        <div>
-          <div class="section-heading" style="text-align:left; margin:0 0 20px;">
-            <h2>One Reliable Contact for Property-Ready Work</h2>
-            <p>Instead of calling multiple people for small jobs, cleanups, and prep work, Property Prep Ohio gives you one dependable point of contact.</p>
-          </div>
-          <div class="check-list">
-            <div class="check"><span>✓</span> Fast scheduling for time-sensitive listings and turnovers</div>
-            <div class="check"><span>✓</span> Practical repairs that help properties show better</div>
-            <div class="check"><span>✓</span> Clean communication with homeowners, agents, and landlords</div>
-            <div class="check"><span>✓</span> Photos and updates available when work is complete</div>
-          </div>
-        </div>
-      </div>
-    </section>
+<input type="text" id="property-address" name="address" placeholder="Property Address" required>
 
-    <section class="light-section" id="process">
-      <div class="container">
-        <div class="section-heading">
-          <h2>How It Works</h2>
-          <p>A simple process designed to save you time and get your property ready without the hassle.</p>
-        </div>
-        <div class="process-grid">
-          <div class="card process-card">
-            <h3>Tell Us What You Need</h3>
-            <p>Call, text, or send a request with the property address, timeline, and work needed.</p>
-          </div>
-          <div class="card process-card">
-            <h3>Get a Clear Estimate</h3>
-            <p>We review the job, ask the right questions, and provide a straightforward quote.</p>
-          </div>
-          <div class="card process-card">
-            <h3>We Get It Done</h3>
-            <p>We complete the work, clean up the area, and help move the property closer to ready.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+<select name="service">
+<option value="">Service Needed</option>
+<option>Cleanout</option>
+<option>Repairs</option>
+<option>Turnover</option>
+</select>
 
-    <section>
-      <div class="container">
-        <div class="cta">
-          <div>
-            <h2>Need a Property Ready Fast?</h2>
-            <p>Call Property Prep Ohio today for repairs, cleanouts, turnovers, and listing prep.</p>
-          </div>
-          <a class="btn btn-primary" href="#contact">Request a Free Quote</a>
-        </div>
-      </div>
-    </section>
-  </main>
+<textarea name="message" placeholder="Describe the job"></textarea>
 
-  <footer>
-    <div class="container footer-grid">
-      <div>
-        <h3>Property Prep Ohio</h3>
-        <p>Professional property prep, cleanout, repair, and turnover services for homeowners, real estate agents, landlords, and investors.</p>
-      </div>
-      <div>
-        <h4>Services</h4>
-        <ul>
-          <li>Property cleanouts</li>
-          <li>Minor repairs</li>
-          <li>Rental turnovers</li>
-          <li>Listing preparation</li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <ul>
-          <li>Request quotes online — we will call you back</li>
-          <li><a href="mailto:your-email@example.com">your-email@example.com</a></li>
-          <li>Serving Ohio</li>
-        </ul>
-      </div>
-    </div>
-    <div class="container copyright">© 2026 Property Prep Ohio. All rights reserved.</div>
-  </footer>
+<input type="file" name="photos" multiple>
+
+<!-- Hidden tracking -->
+<input type="hidden" name="_next" value="https://propertyprepohio.com/thank-you.html">
+<input type="hidden" name="utm_source" id="utm_source">
+<input type="hidden" name="utm_medium" id="utm_medium">
+<input type="hidden" name="utm_campaign" id="utm_campaign">
+<input type="hidden" name="landing_page" id="landing_page">
+<input type="hidden" name="referrer" id="referrer">
+
+<p style="font-size:13px;">We will review your request and call you back.</p>
+
+<button class="btn">Submit</button>
+</form>
+</div>
+
+<!-- Lead Tracking -->
+<script>
+(function(){
+const params = new URLSearchParams(window.location.search);
+document.getElementById('utm_source').value = params.get('utm_source') || '';
+document.getElementById('utm_medium').value = params.get('utm_medium') || '';
+document.getElementById('utm_campaign').value = params.get('utm_campaign') || '';
+document.getElementById('landing_page').value = window.location.href;
+document.getElementById('referrer').value = document.referrer;
+
+document.querySelector("form").addEventListener("submit", function(){
+gtag('event','generate_lead');
+});
+})();
+</script>
+
+<!-- Google Address Autocomplete -->
+<script>
+function initAutocomplete() {
+const input = document.getElementById("property-address");
+
+const autocomplete = new google.maps.places.Autocomplete(input, {
+types: ["address"],
+componentRestrictions: {country: "us"}
+});
+
+autocomplete.addListener("place_changed", () => {
+const place = autocomplete.getPlace();
+if(place.formatted_address){
+input.value = place.formatted_address;
+}
+});
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5Zc4HPDlIU5kqCJb0Yt3uIcYqVnWICIs&libraries=places&callback=initAutocomplete" async defer></script>
+
 </body>
 </html>
