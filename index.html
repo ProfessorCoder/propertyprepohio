@@ -502,7 +502,7 @@
           <form action="https://formspree.io/f/xpwllvbq" method="POST" enctype="multipart/form-data">
             <input type="text" name="first_name" placeholder="First name" autocomplete="given-name" required />
             <input type="text" name="last_name" placeholder="Last name" autocomplete="family-name" required />
-            <input type="tel" id="phone" name="phone" placeholder="Phone number" autocomplete="tel" inputmode="tel" maxlength="14" required />
+            <input type="tel" id="phone" name="phone" placeholder="Phone number" autocomplete="tel" inputmode="numeric" pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" maxlength="14" required />
             <input type="email" id="email" name="email" placeholder="Email address" autocomplete="email" required />
             <input type="text" id="property-address" name="address" placeholder="Start typing property address, then select Google suggestion" autocomplete="off" required />
             <small id="address-help" style="color:#64748b;margin-top:-8px;display:block;">Please select the full address from the Google suggestions to verify it.</small>
@@ -785,7 +785,24 @@
             phoneInput.value = '(' + area + ') ' + middle;
           } else if (digits.length > 0) {
             phoneInput.value = '(' + area;
+          } else {
+            phoneInput.value = '';
           }
+        });
+
+        phoneInput.addEventListener('keypress', function (event) {
+          const charCode = event.which ? event.which : event.keyCode;
+          if (charCode < 48 || charCode > 57) {
+            event.preventDefault();
+          }
+        });
+
+        phoneInput.addEventListener('paste', function (event) {
+          event.preventDefault();
+          const pastedText = (event.clipboardData || window.clipboardData).getData('text');
+          const digits = pastedText.replace(/[^0-9]/g, '').substring(0, 10);
+          phoneInput.value = digits;
+          phoneInput.dispatchEvent(new Event('input'));
         });
       }
 
